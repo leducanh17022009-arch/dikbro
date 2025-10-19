@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lời Chúc Đặc Biệt ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hiệu ứng trái tim lớn */
+        .heart {
+            font-size: 80px;
+            color: #e91e63;
+            animation: heartbeat 1.5s ease-in-out infinite both;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.3); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.2); }
+            60% { transform: scale(1); }
+        }
+
+        h1 {
+            color: #e91e63;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .message {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 30px;
+            background: #fff9f9;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #e91e63;
+        }
+
+        .signature {
+            font-style: italic;
+            color: #666;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        /* Hiệu ứng mưa trái tim nhỏ */
+        .hearts-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-rain {
+            position: absolute;
+            font-size: 20px;
+            color: #e91e63;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Nút chia sẻ */
+        .share-btn {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background: #c2185b;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mưa trái tim nền -->
+    <div class="hearts-rain" id="heartsRain"></div>
+
+    <div class="container">
+        <!-- Trái tim lớn -->
+        <div class="heart">❤️</div>
+        
+        <h1>Lời Chúc của tớ giành cho Thưu 💝</h1>
+        
+        <div class="message">
+            :3 nhân ngày 20/10 tớ chúc thư lun xinh đẹp và vui vẻ i love you soo muchh💕
+            Mong rằng mọi điều tốt đẹp nhất sẽ đến với Thư. Hãy luôn mỉm cười và tỏa sáng nhé! ✨
+            Mãi yêu Cậuuuuu! 💕
+        </div>
+
+        <div class="signature">
+            Gửi từ anh iu ❤️
+        </div>
+
+        <button class="share-btn" onclick="shareLove()">nhận quàa 💌</button>
+    </div>
+
+    <script>
+        // Tạo hiệu ứng mưa trái tim
+        function createHeartsRain() {
+            const heartsRain = document.getElementById('heartsRain');
+            const heartEmojis = ['❤️', '💖', '💕', '💗', '💓', '💞', '💘'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart-rain';
+                    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                    heartsRain.appendChild(heart);
+
+                    // Tự động xóa sau khi rơi xong
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }, i * 300);
+            }
+        }
+
+        // Tạo mưa trái tim liên tục
+        setInterval(createHeartsRain, 2000);
+
+        // Hiệu ứng chia sẻ
+        function shareLove() {
+            alert(':3 chúc mừng em đã nhận được vé đi ăn đồ hànn ❤️\nHãy :3 vòi anh để anh cho đi ăn nàoo ');
+        }
+
+        // Tạo mưa trái tim ngay khi load trang
+        window.onload = function() {
+            createHeartsRain();
+            
+            // Hiệu ứng typewriter cho lời chúc
+            const message = document.querySelector('.message');
+            const originalText = message.innerHTML;
+            message.innerHTML = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    message.innerHTML += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            setTimeout(typeWriter, 1000);
+        }
+    </script>
+</body>
+</html>
